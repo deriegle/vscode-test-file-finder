@@ -30,7 +30,7 @@
                 }
             }
         },
-        "keybindings":[
+        "keybindings": [
             {
                 "command": "extension.splitSpecFile",
                 "key": "ctrl+f1",
@@ -50,13 +50,19 @@
         "compile": "tsc -p ./",
         "watch": "tsc -watch -p ./",
         "postinstall": "node ./node_modules/vscode/bin/install",
-        "test": "npm run compile && node ./node_modules/vscode/bin/test"
+        "test": "jest",
+        "test:coverage": "jest --coverage",
+        "test:integration": "npm run compile && node ./node_modules/vscode/bin/test"
     },
     "devDependencies": {
-        "typescript": "^2.6.1",
-        "vscode": "^1.1.21",
-        "tslint": "^5.8.0",
+        "@types/jest": "^23.3.3",
+        "@types/mocha": "^2.2.42",
         "@types/node": "^8.10.25",
-        "@types/mocha": "^2.2.42"
+        "jest": "^23.6.0",
+        "jest-config": "^23.6.0",
+        "ts-jest": "^23.10.3",
+        "tslint": "^5.8.0",
+        "typescript": "^2.6.1",
+        "vscode": "^1.1.21"
     }
 }
