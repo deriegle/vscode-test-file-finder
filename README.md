@@ -1,18 +1,44 @@
-# open-spec-file README
+# test-file-finder README
 
-This extension `open-spec-file` is useful for quickly finding and opening spec files for Ruby & Javascript files.
-Using the keymapping while inside a file, it will search the file tree for a glob based on the current file name.
+![Video of functionality](Feature.gif)
+
+This extension `test-file-finder` is useful for quickly finding and opening test files.
+The current keybinding is Cmd + F1, but I am taking suggestions for what would be better.
+I currently only have support for Javascript & Ruby, check below for tips on adding configuration for any other test files.
 
 The default globs for finding spec files are:
 Javascript: `-test.js`
 Ruby: `_spec.rb`
 
-You can change these defaults by setting: (The glob is appended to the current file name [minus the file extension])
-`specFinder.javascriptGlob`
-`specFinder.rubyGlob`
+## Current configuration:
 
-## Todo
-1. Add configurable feature to show `Has Spec: <Found>` or `Has Spec: <Not Found>` in the status bar when inside of a file.
-2. Add tests for functionality
-3. Clean up code
-4. Add globs for additional languages
+| Name | Default |
+| -- | -- |
+| `testFinder.showInStatusBar` | `false` |
+| `testFinder.javascriptGlob` | `-test.js` |
+| `testFinder.rubyGlob` | `_spec.rb` |
+
+*showInStatusBar shows a message on the left side of the status bar to indicate whether it has found the test file or not*
+
+
+
+## Adding support for new test files
+You can add support for new test files by adding your configuration to the package.json file.
+You need to use this format:
+
+```json
+"contributes" {
+  "configuration": {
+    "title": "Test File Finder Configuration",
+    "properties": {
+      "testFinder.<languageId>Glob": {
+        "type": "string",
+        "default": "<append-to-file-name>",
+        "description": "..."
+      }
+    }
+  }
+}
+```
+
+[You can find the supported languageId values here](https://code.visualstudio.com/docs/languages/identifiers)

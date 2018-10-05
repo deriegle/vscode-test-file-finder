@@ -1,9 +1,13 @@
 {
-    "name": "open-test-file",
-    "displayName": "open-test-file",
+    "name": "test-file-finder",
+    "displayName": "test-file-finder",
     "description": "Open test file for the current open file",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/deriegle/vscode-test-file-finder"
+    },
     "version": "0.0.1",
-    "publisher": "devinriegle",
+    "publisher": "riegledevin",
     "engines": {
         "vscode": "^1.27.0"
     },
