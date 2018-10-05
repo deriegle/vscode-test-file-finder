@@ -1,7 +1,7 @@
 {
-    "name": "open-spec-file",
-    "displayName": "open-spec-file",
-    "description": "Open spec file for the current open file",
+    "name": "open-test-file",
+    "displayName": "open-test-file",
+    "description": "Open test file for the current open file",
     "version": "0.0.1",
     "publisher": "devinriegle",
     "engines": {
@@ -11,28 +11,35 @@
         "Other"
     ],
     "activationEvents": [
-        "onCommand:extension.splitSpecFile"
+        "onCommand:extension.splitTestFile",
+        "onLanguage:javascript",
+        "onLanguage:ruby"
     ],
     "main": "./out/extension",
     "contributes": {
         "configuration": {
             "title": "Spec Finder Configuration",
             "properties": {
-                "specFinder.javascriptGlob": {
+                "testFinder.javascriptGlob": {
                     "type": "string",
                     "default": "-test.js",
                     "description": "Find javascript files using this glob appended to current file name"
                 },
-                "specFinder.rubyGlob": {
+                "testFinder.rubyGlob": {
                     "type": "string",
                     "default": "_spec.rb",
                     "description": "Find ruby files using this glob appended to current file name"
+                },
+                "testFinder.showInStatusBar": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Show spec file found in status bar"
                 }
             }
         },
         "keybindings": [
             {
-                "command": "extension.splitSpecFile",
+                "command": "extension.splitTestFile",
                 "key": "ctrl+f1",
                 "mac": "cmd+f1",
                 "when": "editorTextFocus"
@@ -40,7 +47,7 @@
         ],
         "commands": [
             {
-                "command": "extension.splitSpecFile",
+                "command": "extension.splitTestFile",
                 "title": "Open Split Spec File"
             }
         ]
@@ -56,7 +63,6 @@
     },
     "devDependencies": {
         "@types/jest": "^23.3.3",
-        "@types/mocha": "^2.2.42",
         "@types/node": "^8.10.25",
         "jest": "^23.6.0",
         "jest-config": "^23.6.0",

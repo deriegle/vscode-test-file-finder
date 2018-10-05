@@ -1,9 +1,7 @@
-import { TextEditor, ViewColumn, window, workspace } from 'vscode';
+import { TextEditor, TextDocument, ViewColumn, window, workspace } from 'vscode';
 
 export interface Globs {
    [K:string]: string;
-   javascript: string;
-   ruby: string;
 }
 
 export default class SpecFileFinder {
@@ -17,7 +15,7 @@ export default class SpecFileFinder {
     this.globs = this._getGlobs();
   }
 
-  private get specFileName() {
+  private get testFileName() {
     if (this.fileName && this.fileType && this.globs.hasOwnProperty(this.fileType)) {
       return `${this.fileName}${this.globs[this.fileType]}`;
     }
@@ -29,33 +27,40 @@ export default class SpecFileFinder {
     window.showErrorMessage(message);
   }
 
-  public async hasSpec(): Promise<boolean> {
-    const files = await workspace.findFiles(`**/${this.specFileName}`);
+  public async hasTest(): Promise<boolean> {
+    const files = await workspace.findFiles(`**/${this.testFileName}`);
     if (!files || files.length === 0) { return false; }
 
     return true;
   }
 
   public findFiles() {
-    workspace.findFiles(`**/${this.specFileName}`).then(files => {
+    workspace.findFiles(`**/${this.testFileName}`).then((files: Array<any>) => {
       if (!files || files.length === 0) {
-        this.showError(`No file found <${this.specFileName}>`);
+        this.showError(`No file found <${this.testFileName}>`);
         return;
       }
 
-      workspace.openTextDocument(files[0]).then(doc => {
+      workspace.openTextDocument(files[0]).then((doc: TextDocument) => {
         window.showTextDocument(doc, ViewColumn.Beside, false);
       });
     });
   }
 
   private _getGlobs(): Globs {
-    const config = workspace.getConfiguration("specFinder");
+    const config = workspace.getConfiguration('testFinder');
+    let globConfiguration: Globs = {};
 
-    return {
-      javascript: config.get('javascriptGlob') as string,
-      ruby: config.get('rubyGlob') as string,
-    };
+    Object.keys(config)
+      .filter(config => config.includes('Glob'))
+      .forEach((glob: string) => {
+        const parsedGlob = RegExp(/(\w+)(Glob)/, 'g').exec(glob);
+        if(!parsedGlob || parsedGlob.length === 0) { return; }
+
+        globConfiguration[parsedGlob[1]] = config.get(glob) as string;
+      });
+
+    return globConfiguration;
   }
 
   private _parseFileName(fileName: string): string | null {

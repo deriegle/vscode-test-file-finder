@@ -1,5 +1,5 @@
 import { TextEditor, Uri, EndOfLine, TextLine, Range, Position, Selection, } from 'vscode';
-import SpecFileFinder from '../spec-file-finder';
+import SpecFileFinder from '../test-file-finder';
 
 const createMockTextEditor = (document: any | undefined = undefined, editor: any | undefined = undefined): TextEditor => {
   return {
@@ -8,8 +8,8 @@ const createMockTextEditor = (document: any | undefined = undefined, editor: any
     visibleRanges: [new Range(0, 0, 0, 0)],
     options: {
     } ,
-    edit: (): Thenable<boolean> => Promise.resolve(true),
-    insertSnippet: (): Thenable<boolean> => Promise.resolve(true),
+    edit: (): Promise<boolean> => Promise.resolve(true),
+    insertSnippet: (): Promise<boolean> => Promise.resolve(true),
     hide: () => {},
     revealRange: () => {},
     setDecorations: () => {},
@@ -23,7 +23,7 @@ const createMockTextEditor = (document: any | undefined = undefined, editor: any
       version: 0,
       isDirty: false,
       isClosed: false,
-      save: (): Thenable<boolean> => Promise.resolve(true),
+      save: (): Promise<boolean> => Promise.resolve(true),
       eol: EndOfLine.CRLF,
       lineCount: 20,
       lineAt: (): TextLine => ({ lineNumber: 2, text: '', range: new Range(0, 0, 0, 0), rangeIncludingLineBreak: new Range(0, 0, 0, 0), isEmptyOrWhitespace: false, firstNonWhitespaceCharacterIndex: 0  }),
@@ -65,8 +65,6 @@ describe('SpecFileFinder', () => {
 
       expect(specFileFinder.fileName).toBe(file);
     });
-
   });
-
 });
 

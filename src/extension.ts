@@ -1,36 +1,32 @@
-'use strict';
-import { commands, ExtensionContext, TextEditor } from 'vscode';
-import SpecFileFinder from './spec-file-finder';
+import { commands, ExtensionContext, TextEditor, window, workspace, StatusBarItem, StatusBarAlignment } from 'vscode';
+import TestFileFinder from './test-file-finder';
 
 export function activate(context: ExtensionContext) {
-    // workspace.getConfiguration('specFinder').get('autoSearchSpec')
-        // window.onDidChangeWindowState(() => {
-        //     console.log('onDidChangeWindowState: Called');
-        // });
-        // window.onDidChangeVisibleTextEditors(() => {
-        //     console.log('onDidChangeVisibleTextEditors: Called');
-        // });
-        // window.onDidChangeActiveTextEditor((editor: TextEditor | undefined) => {
-        //     console.log('onDidChangeActiveTextEditor: Called');
-        //     if(!editor) { return; }
+    let _statusBarItem: StatusBarItem;
 
-        //     new SpecFileFinder(editor).hasSpec().then(hasSpec => {
-        //         if(!_statusBarItem){
-        //             _statusBarItem = window.createStatusBarItem(StatusBarAlignment.Left);
-        //         }
+    if(workspace.getConfiguration('testFinder').get('showInStatusBar')) {
+        window.onDidChangeActiveTextEditor((editor: TextEditor | undefined) => {
+            if(!editor) {
+                if(_statusBarItem) { _statusBarItem.hide(); }
+                return;
+            }
 
-        //         _statusBarItem.text = `Spec: <${hasSpec ? 'Found' : 'Not found'}>`;
-        //         _statusBarItem.color = hasSpec ? 'lightgreen' : 'red';
-        //         _statusBarItem.show();
-        //     });
+            new TestFileFinder(editor).hasTest().then(hasTest => {
+                if(!_statusBarItem) {
+                    _statusBarItem = window.createStatusBarItem(StatusBarAlignment.Left);
+                }
 
+                _statusBarItem.text = `Test file: <${hasTest ? 'Found' : 'Not found'}>`;
+                _statusBarItem.color = hasTest ? 'lightgreen' : 'red';
+                _statusBarItem.show();
+            });
+        });
+    }
 
-        // });
-
-    let disposable = commands.registerTextEditorCommand('extension.splitSpecFile', (editor: TextEditor) => {
+    let disposable = commands.registerTextEditorCommand('extension.splitTestFile', (editor: TextEditor) => {
         if(editor.document.isUntitled || editor.document.isClosed) { return; }
 
-        const specFinder = new SpecFileFinder(editor);
+        const specFinder = new TestFileFinder(editor);
 
         specFinder.findFiles();
     });
