@@ -6,6 +6,8 @@ This extension `test-file-finder` is useful for quickly finding and opening test
 The current keybinding is Cmd + F1, but I am taking suggestions for what would be better.
 I currently only have support for Javascript & Ruby, check below for tips on adding configuration for any other test files.
 
+Add the extension [here](https://marketplace.visualstudio.com/items?itemName=riegledevin.test-file-finder)
+
 The default globs for finding spec files are:
 Javascript: `-test.js`
 Ruby: `_spec.rb`
