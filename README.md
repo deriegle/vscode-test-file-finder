@@ -36,11 +36,7 @@ You can add support for new test files by adding your configuration to the `pack
 }
 ```
 
-<<<<<<< HEAD
 You also need to update the `activationEvents` for the language you're adding so the extension will start when a file for that language is open:
-=======
-You also need to update `activationEvents` for the language you're adding so the extension will start when a file for that language is open:
->>>>>>> bfaea8adf4a94c000b015707d56394b59d355b68
 
 ```json
 "activationEvents": [
