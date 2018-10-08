@@ -42,7 +42,7 @@ export default class SpecFileFinder {
       }
 
       workspace.openTextDocument(files[0]).then((doc: TextDocument) => {
-        window.showTextDocument(doc, ViewColumn.Beside, false);
+        window.showTextDocument(doc, this.getViewColumnToOpenTestFile(), false);
       });
     });
   }
@@ -61,6 +61,12 @@ export default class SpecFileFinder {
       });
 
     return globConfiguration;
+  }
+
+  private getViewColumnToOpenTestFile(): ViewColumn {
+    const splitViewConfig = workspace.getConfiguration('testFinder').get('openInSplitView');
+
+    return splitViewConfig ? ViewColumn.Beside : ViewColumn.Active;
   }
 
   private _parseFileName(fileName: string): string | null {

@@ -44,6 +44,11 @@
                     "type": "boolean",
                     "default": false,
                     "description": "Show spec file found in status bar"
+                },
+                "testFinder.openInSplitView": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Open test file in split view or current window"
                 }
             }
         },
