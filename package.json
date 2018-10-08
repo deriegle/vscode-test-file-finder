@@ -25,6 +25,11 @@
         "configuration": {
             "title": "Spec Finder Configuration",
             "properties": {
+                "testFinder.csharpGlob": {
+                    "type": "string",
+                    "default": "Tests.cs",
+                    "description": "Find C# files using this glob appended to current file name"
+                },
                 "testFinder.javascriptGlob": {
                     "type": "string",
                     "default": "-test.js",
