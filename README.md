@@ -5,7 +5,7 @@
 This extension is useful for quickly finding and opening test files.
 The current keybinding is Ctrl + F1 on Windows or Cmd + F1 on Mac, but I am taking suggestions for what would be better.
 
-Add the extension via the [VS Code marketpalce](https://marketplace.visualstudio.com/items?itemName=riegledevin.test-file-finder), or from the extensions pane in VS Code itself.
+Add the extension via the [VS Code marketplace](https://marketplace.visualstudio.com/items?itemName=riegledevin.test-file-finder), or from the extensions pane in VS Code itself.
 
 ## Current configuration:
 
