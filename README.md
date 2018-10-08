@@ -2,32 +2,24 @@
 
 ![Video of functionality](Feature.gif)
 
-This extension `test-file-finder` is useful for quickly finding and opening test files.
-The current keybinding is Cmd + F1, but I am taking suggestions for what would be better.
-I currently only have support for Javascript & Ruby, check below for tips on adding configuration for any other test files.
+This extension is useful for quickly finding and opening test files.
+The current keybinding is Ctrl + F1 on Windows or Cmd + F1 on Mac, but I am taking suggestions for what would be better.
 
-Add the extension [here](https://marketplace.visualstudio.com/items?itemName=riegledevin.test-file-finder)
-
-The default globs for finding spec files are:
-Javascript: `-test.js`
-Ruby: `_spec.rb`
+Add the extension via the [VS Code marketpalce](https://marketplace.visualstudio.com/items?itemName=riegledevin.test-file-finder), or from the extensions pane in VS Code itself.
 
 ## Current configuration:
 
-| Name | Default |
-| -- | -- |
-| `testFinder.showInStatusBar` | `false` |
-| `testFinder.csharpGlob` | `Tests.cs` |
-| `testFinder.javascriptGlob` | `-test.js` |
-| `testFinder.rubyGlob` | `_spec.rb` |
-
-*showInStatusBar shows a message on the left side of the status bar to indicate whether it has found the test file or not*
+| Name | Default | Description
+| -- | -- | -- |
+| `testFinder.showInStatusBar` | `false` | Shows a message on the left side of the status  bar to indicate whether it has found the test file or not
+| `testFinder.csharpGlob` | `Tests.cs` | Default for C# files (ex: Foo.cs has test file FooTests.cs)
+| `testFinder.javascriptGlob` | `-test.js` | Default for JavaScript files (ex: foo.js has test file foo-test.js)
+| `testFinder.rubyGlob` | `_spec.rb` | Default for Ruby files (ex: foo.rb has test foo_spec.rb)
 
 
 
 ## Adding support for new test files
-You can add support for new test files by adding your configuration to the package.json file.
-You need to use this format:
+You can add support for new test files by adding your configuration to the `package.json` file like so:
 
 ```json
 "contributes" {
@@ -44,4 +36,16 @@ You need to use this format:
 }
 ```
 
-[You can find the supported languageId values here](https://code.visualstudio.com/docs/languages/identifiers)
+<<<<<<< HEAD
+You also need to update the `activationEvents` for the language you're adding so the extension will start when a file for that language is open:
+=======
+You also need to update `activationEvents` for the language you're adding so the extension will start when a file for that language is open:
+>>>>>>> bfaea8adf4a94c000b015707d56394b59d355b68
+
+```json
+"activationEvents": [
+        "onLanguage:<supported-languageId-value>",
+    ]
+```
+
+You can find the supported languageId values [here](https://code.visualstudio.com/docs/languages/identifiers).
