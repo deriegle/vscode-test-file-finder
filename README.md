@@ -12,6 +12,7 @@ Add the extension via the [VS Code marketpalce](https://marketplace.visualstudio
 | Name | Default | Description
 | -- | -- | -- |
 | `testFinder.showInStatusBar` | `false` | Shows a message on the left side of the status  bar to indicate whether it has found the test file or not
+| `testFinder.openInSplitView` | `true` | Open test file in split view or current window
 | `testFinder.csharpGlob` | `Tests.cs` | Default for C# files (ex: Foo.cs has test file FooTests.cs)
 | `testFinder.javascriptGlob` | `-test.js` | Default for JavaScript files (ex: foo.js has test file foo-test.js)
 | `testFinder.rubyGlob` | `_spec.rb` | Default for Ruby files (ex: foo.rb has test foo_spec.rb)
