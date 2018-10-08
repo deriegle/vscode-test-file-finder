@@ -17,6 +17,7 @@ Ruby: `_spec.rb`
 | Name | Default |
 | -- | -- |
 | `testFinder.showInStatusBar` | `false` |
+| `testFinder.csharpGlob` | `Tests.cs` |
 | `testFinder.javascriptGlob` | `-test.js` |
 | `testFinder.rubyGlob` | `_spec.rb` |
 
