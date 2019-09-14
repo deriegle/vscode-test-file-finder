@@ -7,7 +7,7 @@
         "url": "https://github.com/deriegle/vscode-test-file-finder"
     },
     "license": "MIT",
-    "version": "0.1.1",
+    "version": "0.2.0",
     "publisher": "riegledevin",
     "engines": {
         "vscode": "^1.38.0"
@@ -18,9 +18,9 @@
     "activationEvents": [
         "onCommand:extension.splitTestFile",
         "onLanguage:javascript",
-				"onLanguage:ruby",
-				"onLanguage:typescript",
-				"onLanguage:typescriptreact"
+        "onLanguage:ruby",
+        "onLanguage:typescript",
+        "onLanguage:typescriptreact"
     ],
     "main": "./out/extension",
     "contributes": {
@@ -41,17 +41,17 @@
                     "type": "string",
                     "default": "_spec.rb",
                     "description": "Find ruby files using this glob appended to current file name"
-								},
-								"testFinder.typescriptGlob": {
-									"type": "string",
-									"default": "-test.ts",
-									"description": "Find typescript files using this glob appended to the current file name"
-								},
-								"testFinder.typescriptreactGlob": {
-									"type": "string",
-									"default": "-test.ts",
-									"description": "Find TSX (Typescript React) files using this glob appended to the current file name"
-								},
+                },
+                "testFinder.typescriptGlob": {
+                    "type": "string",
+                    "default": "-test.ts",
+                    "description": "Find typescript files using this glob appended to the current file name"
+                },
+                "testFinder.typescriptreactGlob": {
+                    "type": "string",
+                    "default": "-test.ts",
+                    "description": "Find TSX (Typescript React) files using this glob appended to the current file name"
+                },
                 "testFinder.showInStatusBar": {
                     "type": "boolean",
                     "default": false,
