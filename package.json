@@ -10,7 +10,7 @@
     "version": "0.1.0",
     "publisher": "riegledevin",
     "engines": {
-        "vscode": "^1.27.0"
+        "vscode": "^1.38.0"
     },
     "categories": [
         "Other"
@@ -39,7 +39,17 @@
                     "type": "string",
                     "default": "_spec.rb",
                     "description": "Find ruby files using this glob appended to current file name"
-                },
+								},
+								"testFinder.typescriptGlob": {
+									"type": "string",
+									"default": "-test.ts",
+									"description": "Find typescript files using this glob appended to the current file name"
+								},
+								"testFinder.typescriptreactGlob": {
+									"type": "string",
+									"default": "-test.ts",
+									"description": "Find TSX (Typescript React) files using this glob appended to the current file name"
+								},
                 "testFinder.showInStatusBar": {
                     "type": "boolean",
                     "default": false,
@@ -77,13 +87,13 @@
         "test:integration": "npm run compile && node ./node_modules/vscode/bin/test"
     },
     "devDependencies": {
-        "@types/jest": "^23.3.3",
-        "@types/node": "^8.10.25",
-        "jest": "^23.6.0",
-        "jest-config": "^23.6.0",
-        "ts-jest": "^23.10.3",
-        "tslint": "^5.8.0",
-        "typescript": "^2.6.1",
-        "vscode": "^1.1.21"
+        "@types/jest": "24.0.18",
+        "@types/node": "12.7.5",
+        "jest": "24.9.0",
+        "jest-config": "24.9.0",
+        "ts-jest": "24.1.0",
+        "tslint": "5.20.0",
+        "typescript": "3.6.3",
+        "vscode": "1.1.36"
     }
 }
