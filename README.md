@@ -16,6 +16,8 @@ Add the extension via the [VS Code marketplace](https://marketplace.visualstudio
 | `testFinder.csharpGlob` | `Tests.cs` | Default for C# files (ex: Foo.cs has test file FooTests.cs)
 | `testFinder.javascriptGlob` | `-test.js` | Default for JavaScript files (ex: foo.js has test file foo-test.js)
 | `testFinder.rubyGlob` | `_spec.rb` | Default for Ruby files (ex: foo.rb has test foo_spec.rb)
+| `testFinder.typescriptGlob` | `-test.ts` | Default for Typescript files (ex: MyUtil.ts has test MyUtil-test.ts)
+| `testFinder.typescriptreactGlob` | `-test.ts` | Default for TSX files (ex: MyComponent.tsx has test MyComponent-test.ts)
 
 
 
