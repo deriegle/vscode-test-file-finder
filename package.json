@@ -18,7 +18,9 @@
     "activationEvents": [
         "onCommand:extension.splitTestFile",
         "onLanguage:javascript",
-        "onLanguage:ruby"
+				"onLanguage:ruby",
+				"onLanguage:typescript",
+				"onLanguage:typescriptreact"
     ],
     "main": "./out/extension",
     "contributes": {
